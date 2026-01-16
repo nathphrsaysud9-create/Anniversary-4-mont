@@ -2,169 +2,216 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>4 Months Anniversary 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 Months with You 🤍</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Itim', cursive;
+}
+
 body {
     margin: 0;
     height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    width: 360px;
+    background: linear-gradient(180deg, #ffd6e8, #fff);
+    overflow-x: hidden;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    z-index: 2;
 }
 
-h1 {
-    color: #ff4d6d;
-}
-
-#text {
-    min-height: 120px;
-    line-height: 1.6;
-    white-space: pre-line;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 22px;
-    border: none;
-    border-radius: 25px;
-    background: #ff4d6d;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #e63b5f;
-}
-
-.photo {
-    display: none;
-    margin-top: 20px;
-    animation: slideDown 1.2s ease forwards;
-}
-
-.photo img {
-    width: 200px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* หัวใจลอย */
+/* 💗 Hearts */
 .heart {
     position: fixed;
     bottom: -20px;
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
+    font-size: 18px;
+    animation: float 6s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
-@keyframes floatUp {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-110vh); opacity: 0; }
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* 🌸 Layout */
+.container {
+    padding: 20px;
+    margin-top: 18vh;
+}
+
+/* 💝 Button */
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #ff5fa2;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ✨ Typed text */
+#text {
+    margin-top: 25px;
+    font-size: 20px;
+    color: #b30059;
+    min-height: 140px;
+    padding: 0 10px;
+}
+
+/* 🖼 Photos */
+#photoContainer {
+    display: none;
+    margin-top: 20px;
+}
+
+.photo {
+    width: 85%;
+    max-width: 320px;
+    border-radius: 20px;
+    margin: 16px auto;
+    display: block;
+    opacity: 0;
+    animation: slideDown 1.8s ease forwards;
+}
+
+.photo:nth-child(1) { animation-delay: 0.3s; }
+.photo:nth-child(2) { animation-delay: 1.3s; }
+.photo:nth-child(3) { animation-delay: 2.3s; }
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-70px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 💌 Letter */
+#letter {
+    display: none;
+    margin: 30px auto;
+    padding: 22px;
+    width: 90%;
+    max-width: 360px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    color: #7a003c;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: left;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Happy 4 Months 💕</h1>
+<!-- 🎵 Music (ใส่เพลงของเธอได้ตรงนี้) -->
+<audio id="music" loop>
+    <source src="our_song.mp3" type="audio/mpeg">
+</audio>
 
+<div class="container">
+    <button id="btn1">กดเพื่อเซอร์ไพรส์ 💝</button>
     <div id="text"></div>
 
-    <button id="btn" onclick="nextStep()">กดเพื่อเริ่มเซอร์ไพรส์ 💌</button>
+    <div id="photoContainer">
+        <img class="photo" src="poysai1.jpg">
+        <img class="photo" src="poysai2.jpg">
+        <img class="photo" src="poysai3.jpg">
+    </div>
 
-    <div class="photo" id="photo">
-        <img src="poysai.jpg" alt="พอยสัย">
+    <div id="letter">
+        <strong>ถึงพี่มาดริด 🤍</strong><br><br>
+        ที่ผ่านมาเค้าขอบคุณพี่มากๆเลยนะ ที่อยู่เคียงข้างเค้ามาตลอด
+        และยอมรับในสิ่งที่เค้าเป็น พร้อมปรับเพื่อเค้าเสมอ<br><br>
+
+        ในระหว่าง 4 เดือนนี้มีอะไรมากมายเลย
+        ขอบคุณที่ยังยื้อเค้ามาตลอด
+        และไม่เคยตะคอกหรือใส่อารมณ์<br><br>
+
+        ขอบคุณที่ดูแล ที่คอยใส่ใจ คอยช่วยเหลือ
+        ทั้งๆที่เค้าทำให้พี่เหนื่อยมานับร้อยกว่าครั้ง
+        ขอบคุณทุกสิ่งทุกอย่างเลย<br><br>
+
+        อยู่ตามใจเค้าไปนานๆ
+        อยู่รั้งเค้านานๆ<br><br>
+
+        เค้าแสดงออกไปว่าไม่รักพี่เลย
+        แต่พี่รู้มั้ย
+        เค้ารักพี่มากกว่าที่พี่คิดนะคะ 🤍<br><br>
+
+        อยู่กอดกอด จุ้บจุ้บ ไปนานๆเยย 💘<br><br>
+        <div style="text-align:right;">— จากพอยสัย</div>
     </div>
 </div>
 
-<audio id="music">
-    <source src="song.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-let step = 0;
-let typingIndex = 0;
-let currentText = "";
+/* 💗 Hearts */
+setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '💗';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (14 + Math.random() * 20) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 280);
 
+/* 💌 Messages */
 const messages = [
-`ถึงมาดริด 🤍
-
-วันนี้ครบรอบ 4 เดือนแล้วนะ`,
-`4 เดือนที่ผ่านมานี้
-มีทั้งวันที่ยิ้ม
-และวันที่เหนื่อย`,
-`แต่สิ่งหนึ่งที่ไม่เปลี่ยนเลย
-คือการมีมาดริดอยู่ข้าง ๆ`,
-`พลอยดีใจมาก
-ที่ได้คบกับมาดริด 🤍
-
-รักนะ`,
-`นี่คือคนที่พลอยภูมิใจที่สุด 💕
-— จากพลอย`
+    "มาดริดของเค้า 🤍",
+    "วันนี้ครบรอบ 4 เดือนแล้วนะ",
+    "เป็น 4 เดือนที่เค้ามีความสุขมาก",
+    "ขอบคุณที่อยู่ข้าง ๆ เค้ามาตลอด",
+    "ไม่ว่าจะวันดีหรือวันที่เหนื่อย",
+    "แค่มีเธอ เค้าก็อุ่นใจแล้ว",
+    "เลื่อนลงไปนะ… เค้ามีอะไรให้ดู 💕"
 ];
 
-function nextStep() {
-    if (step === 0) {
-        document.getElementById("music").play();
-        createHearts();
-    }
+let msgIndex = 0;
+let charIndex = 0;
 
-    if (step < messages.length) {
-        typeWriter(messages[step]);
-        step++;
-        document.getElementById("btn").innerText = "กดต่อไป 💖";
-    } else {
-        document.getElementById("photo").style.display = "block";
-        document.getElementById("btn").style.display = "none";
-    }
-}
-
-function typeWriter(text) {
-    typingIndex = 0;
-    currentText = text;
-    document.getElementById("text").innerText = "";
-    const interval = setInterval(() => {
-        if (typingIndex < currentText.length) {
-            document.getElementById("text").innerText += currentText.charAt(typingIndex);
-            typingIndex++;
+function typeText() {
+    if (msgIndex < messages.length) {
+        if (charIndex < messages[msgIndex].length) {
+            document.getElementById("text").innerHTML += messages[msgIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeText, 55);
         } else {
-            clearInterval(interval);
+            document.getElementById("text").innerHTML += "<br><br>";
+            msgIndex++;
+            charIndex = 0;
+            setTimeout(typeText, 400);
         }
-    }, 50);
+    } else {
+        document.getElementById("photoContainer").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("letter").style.display = "block";
+        }, 3200);
+    }
 }
 
-/* หัวใจลอย */
-function createHearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 7000);
-    }, 300);
-}
+/* 🎁 Button */
+document.getElementById("btn1").onclick = () => {
+    document.getElementById("btn1").style.display = "none";
+    document.getElementById("music").play();
+    typeText();
+};
 </script>
 
 </body>
