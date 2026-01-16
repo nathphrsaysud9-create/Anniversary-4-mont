@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>4 Months Anniversary 💕</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+#text {
+    min-height: 120px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4d6d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63b5f;
+}
+
+.photo {
+    display: none;
+    margin-top: 20px;
+    animation: slideDown 1.2s ease forwards;
+}
+
+.photo img {
+    width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* หัวใจลอย */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Happy 4 Months 💕</h1>
+
+    <div id="text"></div>
+
+    <button id="btn" onclick="nextStep()">กดเพื่อเริ่มเซอร์ไพรส์ 💌</button>
+
+    <div class="photo" id="photo">
+        <img src="poysai.jpg" alt="พอยสัย">
+    </div>
+</div>
+
+<audio id="music">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let step = 0;
+let typingIndex = 0;
+let currentText = "";
+
+const messages = [
+`ถึงมาดริด 🤍
+
+วันนี้ครบรอบ 4 เดือนแล้วนะ`,
+`4 เดือนที่ผ่านมานี้
+มีทั้งวันที่ยิ้ม
+และวันที่เหนื่อย`,
+`แต่สิ่งหนึ่งที่ไม่เปลี่ยนเลย
+คือการมีมาดริดอยู่ข้าง ๆ`,
+`พลอยดีใจมาก
+ที่ได้คบกับมาดริด 🤍
+
+รักนะ`,
+`นี่คือคนที่พลอยภูมิใจที่สุด 💕
+— จากพลอย`
+];
+
+function nextStep() {
+    if (step === 0) {
+        document.getElementById("music").play();
+        createHearts();
+    }
+
+    if (step < messages.length) {
+        typeWriter(messages[step]);
+        step++;
+        document.getElementById("btn").innerText = "กดต่อไป 💖";
+    } else {
+        document.getElementById("photo").style.display = "block";
+        document.getElementById("btn").style.display = "none";
+    }
+}
+
+function typeWriter(text) {
+    typingIndex = 0;
+    currentText = text;
+    document.getElementById("text").innerText = "";
+    const interval = setInterval(() => {
+        if (typingIndex < currentText.length) {
+            document.getElementById("text").innerText += currentText.charAt(typingIndex);
+            typingIndex++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 50);
+}
+
+/* หัวใจลอย */
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
