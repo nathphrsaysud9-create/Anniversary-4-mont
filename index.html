@@ -15,7 +15,7 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(180deg, #ffd6e8, #fff);
     overflow-x: hidden;
     text-align: center;
@@ -121,9 +121,9 @@ button:active {
 
 <body>
 
-<!-- 🎵 เพลงหวาน (ไม่ต้องอัปโหลดเองก็ได้) -->
-<audio id="music" loop>
-  <source src="https://assets.mixkit.co/music/preview/mixkit-soft-romantic-piano-112.mp3" type="audio/mpeg">
+<!-- 🎵 เพลง 30 วิ -->
+<audio id="music" preload="auto">
+  <source src="our_song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -137,10 +137,8 @@ button:active {
         <img class="photo" src="poysai3.jpg">
     </div>
 
-    <!-- ปุ่มเปิดจดหมาย -->
     <button id="openLetterBtn" style="display:none;">เปิดจดหมายของเค้า 💌</button>
 
-    <!-- 💌 จดหมาย -->
     <div id="letter">
         <strong>ถึงพี่มาดริด 🤍</strong><br><br>
 
@@ -219,7 +217,16 @@ function typeText() {
 /* 🎁 ปุ่มแรก */
 document.getElementById("btn1").onclick = () => {
     document.getElementById("btn1").style.display = "none";
-    document.getElementById("music").play();
+
+    const music = document.getElementById("music");
+    music.volume = 0.6;
+    music.currentTime = 0;
+    music.play();
+
+    setTimeout(() => {
+        music.pause();
+    }, 30000);
+
     typeText();
 };
 
